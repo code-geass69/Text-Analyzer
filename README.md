@@ -43,3 +43,7 @@ npm install
 npm run start
 ```
 
+##Screenshots
+![Text-Analyzer Screenshot](./public/screenshot1.png)
+![Text-Analyzer Screenshot](./public/screenshot2.png)
+
