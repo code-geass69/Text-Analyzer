@@ -3,6 +3,12 @@ import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
+// import About from './components/About';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+
+
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -37,7 +43,7 @@ function App() {
   const togglePookieMode = () => {
     if (mode === 'light') {
       setMode('pookie');
-      document.body.style.backgroundColor = '#970aa3';
+      document.body.style.backgroundColor = '#b30596';
       showAlert("Pookie mode has been enabled", "success");
     } else if (mode === 'pookie') {
       setMode('light');
@@ -48,12 +54,17 @@ function App() {
 
   return (
     <>
-      <Navbar title="Text-Analyzer" mode={mode} toggleMode={toggleMode} togglePookieMode={togglePookieMode} />
-      <Alert alert={alert} />
-      <div className="container my-5">
-        <TextForm heading="Enter the text to analyze" showAlert={showAlert} mode={mode} />
-      </div>
-      {/* <About /> */}
+      <BrowserRouter>
+        <Navbar title="Text-Analyzer" mode={mode} toggleMode={toggleMode} togglePookieMode={togglePookieMode} />
+        <Alert alert={alert} />
+        <div className="container my-5">
+          <Routes>
+            <Route path="/" element={<TextForm heading="Enter Text to Analyze" showAlert={showAlert} mode={mode} />} />
+          </Routes>
+
+
+        </div>
+      </BrowserRouter>
     </>
   );
 }

@@ -51,12 +51,12 @@ export default function TextForm(props) {
 
 
     const textAreaBgColor = props.mode === 'dark' ? '#0b052e' :
-        props.mode === 'pookie' ? '#870e6d' : 'white';
+        props.mode === 'pookie' ? '#ff3688' : 'white';
 
     return (
         <>
-            <div className="container" style={{ color: textColor,  }}>
-                <h1 className='mb-4'>{props.heading}</h1>
+            <div className="container" style={{ color: textColor, }}>
+                <h2 className='mb-4'>{props.heading}: </h2>
                 <div className="mb-3">
                     <textarea
                         className="form-control"
@@ -75,12 +75,12 @@ export default function TextForm(props) {
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleCapClick}>Capitalize</button>
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
             </div>
-            <div className="container my-3" style={{ color: textColor }}>
-                <h2>Your text summary</h2>
-                <p>{text.split(/\s+/).filter((element) => element.length !== 0).length} words and {text.length} characters</p>
-                <p>{0.008 * text.split(/\s+/).filter((element) => element.length !== 0).length} Minutes read</p>
-                <h2>Preview</h2>
-                <p>{text.length > 0 ? text : "Nothing to preview!"}</p>
+            <div className="container my-4" style={{ color: textColor }}>
+                <h3 className='text-decoration-underline'>Your text summary:</h3>
+                <p >Content - <strong>{text.split(/\s+/).filter((element) => element.length !== 0).length}</strong> words and <strong>{text.length}</strong> characters</p>
+                <p>Time - <strong>{0.008 * text.split(/\s+/).filter((element) => element.length !== 0).length}</strong> Minutes read</p>
+                <h3 className='text-decoration-underline'>Preview: </h3>
+                <p className='border'><span className='px-3'>{text.length > 0 ? text : "Nothing to preview! Type something"}</span> </p>
             </div>
         </>
     );

@@ -1,31 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function Navbar(props) {
-    // Define the background color for different modes
-    const navbarBackgroundColor = props.mode === 'pookie' ? '#ff03c8' : '';
+    const navbarBackgroundColor = props.mode === 'pookie' ? '#fbc6f3' : '';
 
     return (
         <nav
             className={`navbar navbar-expand-lg ${props.mode === 'pookie' ? 'navbar-pookie' : `bg-${props.mode}`} navbar-${props.mode}`}
-            style={{ backgroundColor: navbarBackgroundColor }}
-        >
+            style={{ backgroundColor: navbarBackgroundColor }} >
             <div className="container-fluid">
-                <a className="navbar-brand" href="/">{props.title}</a>
+                <Link className="navbar-brand mx-5  text-decoration-underline" to="/"><strong>{props.title}</strong></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/">{props.aboutText}</a>
-                        </li>
-                    </ul>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
 
-                    {/* Dark/Light Mode Toggle */}
                     <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
                         <input
                             className="form-check-input"
@@ -34,11 +25,15 @@ export default function Navbar(props) {
                             role="switch"
                             id="flexSwitchCheckDefault"
                             disabled={props.mode === 'pookie'}
+                            style={{ cursor: "pointer" }}  // Added cursor style here
                         />
                         <label
                             className="form-check-label"
                             htmlFor="flexSwitchCheckDefault"
-                            style={{ color: props.mode === 'pookie' ? '#6c757d' : 'inherit' }}
+                            style={{ 
+                                color: props.mode === 'pookie' ? '#6c757d' : 'inherit',
+                                cursor: "pointer"  // Added cursor style here
+                            }}
                         >
                             {props.mode === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode'}
                         </label>
@@ -53,11 +48,15 @@ export default function Navbar(props) {
                             role="switch"
                             id="flexSwitchCheckPookie"
                             disabled={props.mode === 'dark'}
+                            style={{ cursor: "pointer" }}  // Added cursor style here
                         />
                         <label
                             className="form-check-label"
                             htmlFor="flexSwitchCheckPookie"
-                            style={{ color: props.mode === 'dark' ? '#6c757d' : 'inherit' }}
+                            style={{ 
+                                color: props.mode === 'dark' ? '#6c757d' : 'inherit',
+                                cursor: "pointer"  // Added cursor style here
+                            }}
                         >
                             {props.mode === 'pookie' ? 'Disable Pookie Mode' : 'Enable Pookie Mode'}
                         </label>
@@ -79,5 +78,4 @@ Navbar.propTypes = {
 
 Navbar.defaultProps = {
     title: 'Set title',
-    aboutText: 'About Us'
 };
